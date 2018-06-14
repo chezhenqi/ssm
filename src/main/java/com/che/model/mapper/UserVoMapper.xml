@@ -1,0 +1,405 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+"http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+
+<!-- 不使用namespace的话sql搜索定位会比较方便 -->
+<mapper namespace="userVoMapper">
+
+	<resultMap id="userVo" type="com.che.model.vo.UserVo">
+        <result property="id" column="id"/>
+        <result property="userId" column="user_id"/>
+        <result property="userName" column="user_name"/>
+        <result property="userRealname" column="user_realname"/>
+        <result property="userMobile" column="user_mobile"/>
+        <result property="userRegDate" column="user_reg_date"/>
+        <result property="userChannel" column="user_channel"/>
+        <result property="referrerId" column="referrer_id"/>
+        <result property="referrerName" column="referrer_name"/>
+        <result property="referrerMobile" column="referrer_mobile"/>
+        <result property="referrerUmpUserId" column="referrer_ump_user_id"/>
+        <result property="investId" column="invest_id"/>
+        <result property="investAmt" column="invest_amt"/>
+        <result property="investStatus" column="invest_status"/>
+        <result property="investDate" column="invest_date"/>
+        <result property="loanId" column="loan_id"/>
+        <result property="loanProName" column="loan_pro_name"/>
+        <result property="loanPeriod" column="loan_period"/>
+        <result property="type" column="type"/>
+        <result property="awardAmt" column="award_amt"/>
+        <result property="status" column="status"/>
+        <result property="createDate" column="create_date"/>
+        <result property="modifyDate" column="modify_date"/>
+        <result property="remark" column="remark"/>
+	</resultMap>
+	
+	<!-- 用于select查询公用抽取的列 -->
+	<sql id="columns">
+	    <![CDATA[
+		id,user_id,user_name,user_realname,user_mobile,user_reg_date,user_channel,referrer_id,referrer_name,referrer_mobile,referrer_ump_user_id,invest_id,invest_amt,invest_status,invest_date,loan_id,loan_pro_name,loan_period,type,award_amt,status,create_date,modify_date,remark
+	    ]]>
+	</sql>
+
+	<!-- useGeneratedKeys="true" keyProperty="xxx" for sqlserver and mysql -->
+	<insert id="insert" useGeneratedKeys="true" keyProperty="id">
+	
+    INSERT INTO award_record (
+    <trim suffix="" suffixOverrides=",">
+     	<if test="id != null">
+     		id ,
+     	</if>
+     	<if test="userId != null">
+     		user_id ,
+     	</if>
+     	<if test="userName != null">
+     		user_name ,
+     	</if>
+     	<if test="userRealname != null">
+     		user_realname ,
+     	</if>
+     	<if test="userMobile != null">
+     		user_mobile ,
+     	</if>
+     	<if test="userRegDate != null">
+     		user_reg_date ,
+     	</if>
+     	<if test="userChannel != null">
+     		user_channel ,
+     	</if>
+     	<if test="referrerId != null">
+     		referrer_id ,
+     	</if>
+     	<if test="referrerName != null">
+     		referrer_name ,
+     	</if>
+     	<if test="referrerMobile != null">
+     		referrer_mobile ,
+     	</if>
+     	<if test="referrerUmpUserId != null">
+     		referrer_ump_user_id ,
+     	</if>
+     	<if test="investId != null">
+     		invest_id ,
+     	</if>
+     	<if test="investAmt != null">
+     		invest_amt ,
+     	</if>
+     	<if test="investStatus != null">
+     		invest_status ,
+     	</if>
+     	<if test="investDate != null">
+     		invest_date ,
+     	</if>
+     	<if test="loanId != null">
+     		loan_id ,
+     	</if>
+     	<if test="loanProName != null">
+     		loan_pro_name ,
+     	</if>
+     	<if test="loanPeriod != null">
+     		loan_period ,
+     	</if>
+     	<if test="type != null">
+     		type ,
+     	</if>
+     	<if test="awardAmt != null">
+     		award_amt ,
+     	</if>
+     	<if test="status != null">
+     		status ,
+     	</if>
+     	<if test="createDate != null">
+     		create_date ,
+     	</if>
+     	<if test="modifyDate != null">
+     		modify_date ,
+     	</if>
+     	<if test="remark != null">
+     		remark 
+     	</if>
+    </trim>
+    ) VALUES (
+    <trim suffix="" suffixOverrides=",">
+	    	<if test="id != null">
+	    		#{id} ,
+	    	</if>
+	    	<if test="userId != null">
+	    		#{userId} ,
+	    	</if>
+	    	<if test="userName != null">
+	    		#{userName} ,
+	    	</if>
+	    	<if test="userRealname != null">
+	    		#{userRealname} ,
+	    	</if>
+	    	<if test="userMobile != null">
+	    		#{userMobile} ,
+	    	</if>
+	    	<if test="userRegDate != null">
+	    		#{userRegDate} ,
+	    	</if>
+	    	<if test="userChannel != null">
+	    		#{userChannel} ,
+	    	</if>
+	    	<if test="referrerId != null">
+	    		#{referrerId} ,
+	    	</if>
+	    	<if test="referrerName != null">
+	    		#{referrerName} ,
+	    	</if>
+	    	<if test="referrerMobile != null">
+	    		#{referrerMobile} ,
+	    	</if>
+	    	<if test="referrerUmpUserId != null">
+	    		#{referrerUmpUserId} ,
+	    	</if>
+	    	<if test="investId != null">
+	    		#{investId} ,
+	    	</if>
+	    	<if test="investAmt != null">
+	    		#{investAmt} ,
+	    	</if>
+	    	<if test="investStatus != null">
+	    		#{investStatus} ,
+	    	</if>
+	    	<if test="investDate != null">
+	    		#{investDate} ,
+	    	</if>
+	    	<if test="loanId != null">
+	    		#{loanId} ,
+	    	</if>
+	    	<if test="loanProName != null">
+	    		#{loanProName} ,
+	    	</if>
+	    	<if test="loanPeriod != null">
+	    		#{loanPeriod} ,
+	    	</if>
+	    	<if test="type != null">
+	    		#{type} ,
+	    	</if>
+	    	<if test="awardAmt != null">
+	    		#{awardAmt} ,
+	    	</if>
+	    	<if test="status != null">
+	    		#{status} ,
+	    	</if>
+	    	<if test="createDate != null">
+	    		#{createDate} ,
+	    	</if>
+	    	<if test="modifyDate != null">
+	    		#{modifyDate} ,
+	    	</if>
+	    	<if test="remark != null">
+	    		#{remark} 
+	    	</if>
+    </trim>      
+    )
+		<!--	
+			oracle: order="BEFORE" SELECT sequenceName.nextval AS ID FROM DUAL 
+			DB2: order="BEFORE"" values nextval for sequenceName
+		<selectKey resultType="java.lang.Long" order="BEFORE" keyProperty="userId">
+			SELECT sequenceName.nextval AS ID FROM DUAL 
+        </selectKey>
+		-->
+	</insert>
+    
+	<update id="update" >
+       UPDATE award_record
+       <set>
+        <if test="userId != null">
+        	user_id = #{userId},
+       	</if>
+        <if test="userName != null">
+        	user_name = #{userName},
+       	</if>
+        <if test="userRealname != null">
+        	user_realname = #{userRealname},
+       	</if>
+        <if test="userMobile != null">
+        	user_mobile = #{userMobile},
+       	</if>
+        <if test="userRegDate != null">
+        	user_reg_date = #{userRegDate},
+       	</if>
+        <if test="userChannel != null">
+        	user_channel = #{userChannel},
+       	</if>
+        <if test="referrerId != null">
+        	referrer_id = #{referrerId},
+       	</if>
+        <if test="referrerName != null">
+        	referrer_name = #{referrerName},
+       	</if>
+        <if test="referrerMobile != null">
+        	referrer_mobile = #{referrerMobile},
+       	</if>
+        <if test="referrerUmpUserId != null">
+        	referrer_ump_user_id = #{referrerUmpUserId},
+       	</if>
+        <if test="investId != null">
+        	invest_id = #{investId},
+       	</if>
+        <if test="investAmt != null">
+        	invest_amt = #{investAmt},
+       	</if>
+        <if test="investStatus != null">
+        	invest_status = #{investStatus},
+       	</if>
+        <if test="investDate != null">
+        	invest_date = #{investDate},
+       	</if>
+        <if test="loanId != null">
+        	loan_id = #{loanId},
+       	</if>
+        <if test="loanProName != null">
+        	loan_pro_name = #{loanProName},
+       	</if>
+        <if test="loanPeriod != null">
+        	loan_period = #{loanPeriod},
+       	</if>
+        <if test="type != null">
+        	type = #{type},
+       	</if>
+        <if test="awardAmt != null">
+        	award_amt = #{awardAmt},
+       	</if>
+        <if test="status != null">
+        	status = #{status},
+       	</if>
+        <if test="createDate != null">
+        	create_date = #{createDate},
+       	</if>
+        <if test="modifyDate != null">
+        	modify_date = #{modifyDate},
+       	</if>
+        <if test="remark != null">
+        	remark = #{remark},
+       	</if>
+       </set>
+       WHERE 
+       id = #{id} 
+	</update>
+
+    <delete id="delete">
+    <![CDATA[
+        DELETE FROM award_record WHERE
+        id = #{id} 
+    ]]>
+    </delete>
+    
+    <select id="getById" resultMap="awardRecord">
+		SELECT <include refid="columns" />
+	    <![CDATA[
+		    FROM award_record 
+	        WHERE 
+		        id = #{id} 
+	    ]]>
+	</select>
+	
+	<sql id="where">
+		<!-- ognl访问静态方法的表达式 为@class@method(args),以下为调用rapid中的Ognl.isNotEmpty()方法,还有其它方法如isNotBlank()可以使用，具体请查看Ognl类 -->
+		<where>	      				
+	       <if test="@Ognl@isNotEmpty(id)">
+				AND id = #{id}
+			</if>
+	       <if test="@Ognl@isNotEmpty(userId)">
+				AND user_id = #{userId}
+			</if>
+	       <if test="@Ognl@isNotEmpty(userName)">
+				AND user_name = #{userName}
+			</if>
+	       <if test="@Ognl@isNotEmpty(userRealname)">
+				AND user_realname = #{userRealname}
+			</if>
+	       <if test="@Ognl@isNotEmpty(userMobile)">
+				AND user_mobile = #{userMobile}
+			</if>
+	       <if test="@Ognl@isNotEmpty(userRegDate)">
+				AND user_reg_date = #{userRegDate}
+			</if>
+	       <if test="@Ognl@isNotEmpty(userChannel)">
+				AND user_channel = #{userChannel}
+			</if>
+	       <if test="@Ognl@isNotEmpty(referrerId)">
+				AND referrer_id = #{referrerId}
+			</if>
+	       <if test="@Ognl@isNotEmpty(referrerName)">
+				AND referrer_name = #{referrerName}
+			</if>
+	       <if test="@Ognl@isNotEmpty(referrerMobile)">
+				AND referrer_mobile = #{referrerMobile}
+			</if>
+	       <if test="@Ognl@isNotEmpty(referrerUmpUserId)">
+				AND referrer_ump_user_id = #{referrerUmpUserId}
+			</if>
+	       <if test="@Ognl@isNotEmpty(investId)">
+				AND invest_id = #{investId}
+			</if>
+	       <if test="@Ognl@isNotEmpty(investAmt)">
+				AND invest_amt = #{investAmt}
+			</if>
+	       <if test="@Ognl@isNotEmpty(investStatus)">
+				AND invest_status = #{investStatus}
+			</if>
+	       <if test="@Ognl@isNotEmpty(investDate)">
+				AND invest_date = #{investDate}
+			</if>
+	       <if test="@Ognl@isNotEmpty(loanId)">
+				AND loan_id = #{loanId}
+			</if>
+	       <if test="@Ognl@isNotEmpty(loanProName)">
+				AND loan_pro_name = #{loanProName}
+			</if>
+	       <if test="@Ognl@isNotEmpty(loanPeriod)">
+				AND loan_period = #{loanPeriod}
+			</if>
+	       <if test="@Ognl@isNotEmpty(type)">
+				AND type = #{type}
+			</if>
+	       <if test="@Ognl@isNotEmpty(awardAmt)">
+				AND award_amt = #{awardAmt}
+			</if>
+	       <if test="@Ognl@isNotEmpty(status)">
+				AND status = #{status}
+			</if>
+	       <if test="@Ognl@isNotEmpty(createDate)">
+				AND create_date = #{createDate}
+			</if>
+	       <if test="@Ognl@isNotEmpty(modifyDate)">
+				AND modify_date = #{modifyDate}
+			</if>
+	       <if test="@Ognl@isNotEmpty(remark)">
+				AND remark = #{remark}
+			</if>
+		</where>
+	</sql>
+		
+    <select id="count" resultType="long">
+        SELECT count(*) FROM award_record 
+		<include refid="where"/>    
+    </select>
+    
+    <!--
+    	分页查询已经使用Dialect进行分页,也可以不使用Dialect直接编写分页
+    	因为分页查询将传 offset,pageSize,lastRows 三个参数,不同的数据库可以根于此三个参数属性应用不同的分页实现
+    -->
+    <select id="findPage" resultMap="awardRecord">
+    	SELECT <include refid="columns" />
+	    FROM award_record 
+		<include refid="where"/>
+		
+		<if test="@Ognl@isNotEmpty(sortColumns)">
+			ORDER BY ${sortColumns}
+		</if>
+    </select>
+    
+    <select id="getList" resultMap="awardRecord">
+    	SELECT <include refid="columns" />
+	    FROM award_record 
+		<include refid="where"/>
+    </select>
+
+	
+</mapper>
+
